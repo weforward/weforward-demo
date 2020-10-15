@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user -->
+<!-- -->
+<!-- For professional support please see -->
+<!-- http://www.qos.ch/shop/products/professionalSupport -->
+<!-- -->
+<!DOCTYPE configuration>
+<configuration>
+	<appender name="stdout"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%d{HH:mm:ss.SSS}[%thread]%-5level %logger{50} %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="cn.weforward.framework.ext.RpcEndPoint" level="DEBUG" />
+	
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="stdout" />
+	</root>
+</configuration>

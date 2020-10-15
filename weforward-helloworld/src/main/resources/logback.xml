@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user -->
+<!-- -->
+<!-- For professional support please see -->
+<!-- http://www.qos.ch/shop/products/professionalSupport -->
+<!-- -->
+<configuration>
+	<appender name="remote" class="cn.weforward.common.log.DelayRemoteAppender">
+		<url>${rlog.url}</url>
+		<projectName>${project_name}</projectName>
+		<serverid>${weforward.serverid}</serverid>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{HH:mm:ss.SSS}[%thread]%-5level %logger{50} %msg%n
+			</pattern>
+		</layout>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="remote" />
+	</root>
+</configuration>
