@@ -1,6 +1,6 @@
 # weforward-demo
 
-使用weforward项目示例
+使用weforward框架的项目示例
 
 运行项目
 
@@ -23,7 +23,7 @@
 最简单的入门示例
 
 ## weforward-product
-产品微服务
+商品微服务
 
 ## weforward-pay
 支付微服务
