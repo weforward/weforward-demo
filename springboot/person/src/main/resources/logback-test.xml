@@ -9,8 +9,7 @@
 <!-- -->
 <!DOCTYPE configuration>
 <configuration>
-	<appender name="stdout"
-		class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder
 			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>%d{HH:mm:ss.SSS}[%thread]%-5level %logger{50} %msg%n
@@ -20,7 +19,7 @@
 	
 	<logger name="cn.weforward.framework.ext.RpcEndPoint" level="DEBUG" />
 	
-	<logger name="cn.weforward.springbootdemo.mapper" level="trace"/>
+	<logger name="cn.weforward.person.mapper" level="trace"/>
   
 	<root>
 		<level value="INFO" />

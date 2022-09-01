@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.weforward.springbootdemo.mapper.OnePersonMapper">
+<mapper namespace="cloud.weforward.person.mapper.OnePersonMapper">
 
+    <select id="nameCount" resultType="cloud.weforward.person.dto.PersonNameCountResult">
+        SELECT name,COUNT(*) AS count
+        FROM one_person
+        <where>
+            <if test="name!=null and name!=''">
+                name=#{name}
+            </if>
+        </where>
+        GROUP BY name
+    </select>
 </mapper>
