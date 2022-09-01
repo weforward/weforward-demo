@@ -5,6 +5,7 @@ tmp
 .classpath
 .project
 .svn
-weforward-user
+.iml
 weforward-dev.properties
-
+/config/
+/.idea/
