@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 内部API接口配置文件 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<!-- 云配置 -->
+	<bean id="propertyConfigurer" class="cn.weforward.boot.CloudPropertyPlaceholderConfigurer"/>
+	
+	<!-- 服务 -->
+	<bean id="service" class="cn.weforward.framework.ext.WeforwardService">
+		<constructor-arg index="0" value="${weforward.name}" />
+		<constructor-arg index="1" value="${weforward.host}" />
+		<constructor-arg index="2" value="${weforward.port}" />
+		<constructor-arg index="3" value="/"/>
+		<constructor-arg index="4" value="0" />
+		<property name="no" value="${weforward.serverid}"/>
+		<property name="servicesUrl" value="${weforward.apiUrl}"/>
+		<property name="accessId" value="${weforward.service.accessId}"/>
+		<property name="accessKey" value="${weforward.service.accessKey}"/>
+		<!-- 验证权限的模块，需要登陆的要拿掉此注释
+		<property name="authorizer">
+				<bean  class="cn.weforward.framework.Authorizer">
+					<property name="userService" ref="userService"/> 
+					<property name="ignoreUris">
+						<list>
+							<value>/login/*</value>
+						</list>
+					</property>
+				</bean>
+		</property> -->
+	</bean>
+	
+	<!-- 版本方法 -->
+	<bean id="versionMethod" class="cn.weforward.framework.ext.VersionMethod">
+		<constructor-arg index="0" ref="service"/>
+		<constructor-arg index="1">
+			<list>
+				<value>cn.weforward.framework.ext.WeforwardService</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 调试脚本方法 -->
+	<bean id="debugMethod" class="cn.weforward.framework.ext.DebugMethod">
+		<constructor-arg index="0" ref="service"/>
+	</bean>
+	
+	<!-- 文档方法 -->
+	<bean class="cn.weforward.framework.ext.DocumentMethod">
+		<constructor-arg ref="service" />
+	</bean>
+	
+	<!-- 方法集发现 -->
+	<bean class="cn.weforward.framework.ext.MethodsAware">
+		<constructor-arg ref="service" />
+	</bean>
+	
+	
+	<context:component-scan base-package="cn.weforward.helloworld.weforward" />
+		
+</beans>

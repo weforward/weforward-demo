@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 内部API接口配置文件 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- 刷写器 -->
+	<bean id="payFlusher" class="cn.weforward.data.util.DelayFlusher">
+		<property name="name" value="pay-flusher"/>
+	</bean>
+	
+	<!-- 持久类 -->
+	<bean id="payPersisterFactory" class="cn.weforward.data.mongodb.persister.MongodbPersisterFactory">
+		<constructor-arg index="0" value="${mongodb.url}"/>
+		<constructor-arg index="1" value="${mongodb.dbname}"/>
+		<property name="serverId" value="${weforward.serverid}"/>
+		<property name="flusher" ref="payFlusher"/>
+	</bean>
+	
+	<!-- 支付服务 -->
+	<bean id="payService" class="cn.weforward.pay.impl.PayServiceImpl">
+		<constructor-arg index="0" ref="payPersisterFactory"/>
+		<property name="eventInvoker" ref="eventInvoker"/>
+	</bean>
+	
+	<!-- 事件调用 -->
+	<bean id="eventInvoker" class="cn.weforward.protocol.client.SimpleEventInvoker">
+		<constructor-arg index="0"  value="${weforward.apiUrl}"/>
+		<constructor-arg index="1" value="${weforward.service.accessId}"/>
+		<constructor-arg index="2"  value="${weforward.service.accessKey}"/>
+	</bean>
+		
+</beans>

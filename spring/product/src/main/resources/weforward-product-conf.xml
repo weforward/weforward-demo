@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 内部API接口配置文件 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- 刷写器 -->
+	<bean id="productFlusher" class="cn.weforward.data.util.DelayFlusher">
+		<constructor-arg index="0" value="3"/>
+		<property name="name" value="product-flusher"/>
+	</bean>
+	
+	<!-- 持久类 -->
+	<bean id="productPersisterFactory" class="cn.weforward.data.mongodb.persister.MongodbPersisterFactory">
+		<constructor-arg index="0" value="${mongodb.url}"/>
+		<constructor-arg index="1" value="${mongodb.dbname}"/>
+		<property name="serverId" value="${weforward.serverid}"/>
+		<property name="flusher" ref="productFlusher"/>
+	</bean>
+	
+	<!-- 标签集 -->
+	<bean id="productLabelSetFactory" class="cn.weforward.data.mongodb.array.MongodbLabelSetFactory">
+		<constructor-arg index="0" value="${mongodb.url}"/>
+		<property name="serverId" value="${weforward.serverid}"/>
+	</bean>
+	
+	<!-- 计数器 -->
+	<bean id="productCounterFactory" class="cn.weforward.data.counter.label.LabelCounterFactory">
+		<constructor-arg index="0" ref="productLabelSetFactory"/>
+		<constructor-arg index="1" value="${weforward.serverid}"/>
+		<property name="flusher" ref="productFlusher"/>
+	</bean>
+	
+	<!-- 产品服务 -->
+	<bean id="productService" class="cn.weforward.product.impl.ProductServiceImpl">
+		<constructor-arg index="0" ref="productPersisterFactory"/>
+		<constructor-arg index="1" ref="productCounterFactory"/>
+	</bean>
+	
+</beans>
