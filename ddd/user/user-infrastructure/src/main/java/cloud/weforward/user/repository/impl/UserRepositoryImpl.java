@@ -2,12 +2,10 @@ package cloud.weforward.user.repository.impl;
 
 import org.springframework.stereotype.Component;
 
+import cloud.weforward.user.convertor.UserConvertor;
 import cloud.weforward.user.domain.User;
 import cloud.weforward.user.domain.store.UserRepository;
-import cloud.weforward.user.repository.CommonUser;
-import cn.weforward.data.persister.BusinessDi;
-import cn.weforward.data.persister.Persistent;
-import cn.weforward.data.persister.Persister;
+import cloud.weforward.user.mapper.UserMapper;
 import cn.weforward.data.persister.PersisterFactory;
 
 /**
@@ -15,35 +13,28 @@ import cn.weforward.data.persister.PersisterFactory;
  * @date 2022/9/2 14:15
  */
 @Component
-public class UserRepositoryImpl implements UserRepository, BusinessDi {
+public class UserRepositoryImpl implements UserRepository {
 
-    protected PersisterFactory persisterFactory;
-
-    final Persister<CommonUser> m_PsUser;
+    protected UserMapper userMapper;
 
     public UserRepositoryImpl(PersisterFactory persisterFactory) {
-        this.persisterFactory = persisterFactory;
-        m_PsUser = persisterFactory.createPersister(CommonUser.class, this);
     }
 
     @Override
     public void update(User user) {
         if (null == user.getId()) {
-            new CommonUser(this, user.getName());
+            user.setId(String.valueOf(System.currentTimeMillis()));
+            userMapper.insert(UserConvertor.toDataObject(user));
         } else {
-            CommonUser cuser = m_PsUser.get(user.getId());
-            cuser.update(user.getName());
+            userMapper.updateById(UserConvertor.toDataObject(user));
         }
     }
 
     @Override
     public User get(String id) {
-        CommonUser cuser = m_PsUser.get(id);
-        return null==cuser?null: cuser.getDomain();
+        cloud.weforward.user.entity.User user = userMapper.selectById(id);
+        return UserConvertor.toDomain(user);
     }
 
-    @Override
-    public <E extends Persistent> Persister<E> getPersister(Class<E> clazz) {
-        return persisterFactory.getPersister(clazz);
-    }
+
 }

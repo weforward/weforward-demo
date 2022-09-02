@@ -12,7 +12,6 @@ import cn.weforward.data.mybatisplus.support.MyBatisPlusBusinessVo;
  */
 public class User extends MyBatisPlusBusinessVo {
 
-    public static final long MARK_MAN = 1L;
     private String name;
 
     private Integer age;
@@ -20,6 +19,8 @@ public class User extends MyBatisPlusBusinessVo {
     private String mobile;
 
     private String email;
+
+    private int sex;
 
     private Long marks;
 
@@ -53,6 +54,14 @@ public class User extends MyBatisPlusBusinessVo {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
     }
 
     public Long getMarks() {

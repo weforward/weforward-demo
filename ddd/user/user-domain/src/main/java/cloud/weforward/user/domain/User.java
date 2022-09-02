@@ -22,6 +22,10 @@ public class User {
 
     protected Sex sex;
 
+    public User() {
+
+    }
+
     public User(String id, String name, int age, String mobile, String email, Sex sex) {
         Objects.requireNonNull(name, "名称不能为空");
         Objects.requireNonNull(email, "邮箱不能为空");
@@ -65,5 +69,29 @@ public class User {
 
     public Sex getSex() {
         return sex;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 }
