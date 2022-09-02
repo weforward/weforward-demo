@@ -10,13 +10,13 @@
     <packaging>pom</packaging>
 
     <name>weforward-demo</name>
-    <url>http://weforward.xyz</url>
+    <url>http://weforward.cloud</url>
     <description>weforward module</description>
 
     <developers>
         <developer>
             <name>wf</name>
-            <email>wf@weforward.xyz</email>
+            <email>wf@weforward.cloud</email>
         </developer>
     </developers>
 
@@ -35,9 +35,12 @@
     <modules>
         <module>spring</module>
         <module>springboot</module>
+        <module>ddd</module>
     </modules>
 
     <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <weforward.version>1.2.14</weforward.version>
         <weforward.data.version>1.2.13</weforward.data.version>
@@ -87,8 +90,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
         </plugins>

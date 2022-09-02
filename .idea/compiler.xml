@@ -7,11 +7,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="helloworld" />
-        <module name="pay" />
         <module name="product" />
+        <module name="user-infrastructure" />
+        <module name="user-domain" />
+        <module name="user-app" />
         <module name="person" />
+        <module name="start" />
+        <module name="pay" />
+        <module name="user-client" />
+        <module name="user-adapter" />
         <module name="order" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="infrastructure" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

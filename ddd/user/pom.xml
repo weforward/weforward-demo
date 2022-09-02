@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ddd</artifactId>
+        <groupId>cloud.weforward</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>user</artifactId>
+    <packaging>pom</packaging>
+
+    <name>user</name>
+    <url>http://maven.apache.org</url>
+
+    <modules>
+        <module>user-domain</module>
+        <module>user-client</module>
+        <module>user-app</module>
+        <module>user-adapter</module>
+        <module>user-infrastructure</module>
+        <module>start</module>
+    </modules>
+
+    <properties>
+        <spring.boot.version>2.5.3</spring.boot.version>
+        <spring.version>5.3.9</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mybatis.plus.version>3.4.3.4</mybatis.plus.version>
+        <mybatis.plus.starter.version>3.4.3.4</mybatis.plus.starter.version>
+
+    </properties>
+    <dependencyManagement>
+
+        <dependencies>
+            <dependency>
+                <groupId>cloud.weforward</groupId>
+                <artifactId>user-adapter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cloud.weforward</groupId>
+                <artifactId>user-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cloud.weforward</groupId>
+                <artifactId>user-app</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cloud.weforward</groupId>
+                <artifactId>user-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cloud.weforward</groupId>
+                <artifactId>user-infrastructure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.weforward</groupId>
+                <artifactId>weforawrd-protocol</artifactId>
+                <version>${weforward.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.weforward</groupId>
+                <artifactId>weforawrd-framework</artifactId>
+                <version>${weforward.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.weforward</groupId>
+                <artifactId>weforawrd-data-mybatis-plus</artifactId>
+                <version>${weforward.data.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.weforward</groupId>
+                <artifactId>weforward-data-mongodb</artifactId>
+                <version>${weforward.data.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
