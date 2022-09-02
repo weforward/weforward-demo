@@ -1,7 +1,5 @@
 package cloud.weforward.user.api;
 
-import cloud.weforward.user.dto.UserNameCountQuery;
-import cloud.weforward.user.dto.UserNameCountResult;
 
 /**
  * @author daibo
@@ -9,5 +7,5 @@ import cloud.weforward.user.dto.UserNameCountResult;
  */
 public interface UserService {
 
-    UserNameCountResult nameCount(UserNameCountQuery query);
+
 }

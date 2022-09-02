@@ -20,6 +20,10 @@
     <dependencies>
         <dependency>
             <groupId>cloud.weforward</groupId>
+            <artifactId>user-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cloud.weforward</groupId>
             <artifactId>user-domain</artifactId>
         </dependency>
         <dependency>

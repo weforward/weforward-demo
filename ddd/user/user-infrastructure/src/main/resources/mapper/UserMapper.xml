@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cloud.weforward.user.mapper.UserMapper">
+
+    <select id="nameCount" resultType="cloud.weforward.user.dto.UserNameCountResult">
+        SELECT name,count(*) as count FROM USER
+        <where>
+            <if test="name!=null and name!=''">
+                name=#{name}
+            </if>
+        </where>
+        GROUP BY name
+    </select>
+</mapper>
