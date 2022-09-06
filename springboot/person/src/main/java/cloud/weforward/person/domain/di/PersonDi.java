@@ -1,4 +1,4 @@
-package cloud.weforward.person.service.di;
+package cloud.weforward.person.domain.di;
 
 import cn.weforward.data.persister.BusinessDi;
 

@@ -1,6 +1,6 @@
 package cloud.weforward.person.weforward.view;
 
-import cloud.weforward.person.service.Person;
+import cloud.weforward.person.domain.Person;
 import cn.weforward.protocol.doc.annotation.DocAttribute;
 
 public class PersonView {

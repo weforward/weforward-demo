@@ -1,11 +1,11 @@
-package cloud.weforward.person.service.impl;
+package cloud.weforward.person.domain.impl;
 
 import java.util.Random;
 
 import cn.weforward.data.persister.support.AbstractVoPersistent;
 import cloud.weforward.person.entity.OnePerson;
-import cloud.weforward.person.service.Person;
-import cloud.weforward.person.service.di.PersonDi;
+import cloud.weforward.person.domain.Person;
+import cloud.weforward.person.domain.di.PersonDi;
 
 public class SimplePerson extends AbstractVoPersistent<PersonDi, OnePerson> implements Person {
 

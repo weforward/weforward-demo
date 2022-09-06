@@ -1,16 +1,16 @@
-package cloud.weforward.person.service.impl;
+package cloud.weforward.person.domain.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cloud.weforward.person.service.di.PersonDi;
+import cloud.weforward.person.domain.di.PersonDi;
 import cn.weforward.common.ResultPage;
 import cn.weforward.data.persister.Persistent;
 import cn.weforward.data.persister.Persister;
 import cn.weforward.data.persister.PersisterFactory;
 import cn.weforward.data.persister.ext.ConditionUtil;
-import cloud.weforward.person.service.Person;
-import cloud.weforward.person.service.PersonService;
+import cloud.weforward.person.domain.Person;
+import cloud.weforward.person.domain.PersonService;
 
 @Service
 public class PersonServiceImpl implements PersonDi, PersonService {

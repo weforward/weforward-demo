@@ -1,4 +1,4 @@
-package cloud.weforward.person.service;
+package cloud.weforward.person.domain;
 
 public interface Person {
 
