@@ -17,22 +17,22 @@ public class PersonServiceImpl implements PersonDi, PersonService {
 
 	protected final PersisterFactory m_Factory;
 
-	protected final Persister<SimplePerson> m_PsPerson;
+	protected final Persister<Person> m_PsPerson;
 
 	public PersonServiceImpl(PersisterFactory factory) {
 		m_Factory = factory;
-		m_PsPerson = m_Factory.createPersister(SimplePerson.class, this);
+		m_PsPerson = m_Factory.createPersister(Person.class, this);
 	}
 
 	@Override
 	public Person create(String name) {
-		return new SimplePerson(this, name);
+		return new Person(this, name);
 	}
 
 	@Transactional
 	@Override
 	public Person tryCreate(String name) {
-		SimplePerson p = new SimplePerson(this, name);
+		Person p = new Person(this, name);
 		if (p.getAge() % 2 == 0) {
 			throw new RuntimeException("中奖了，创建不成功");
 		}

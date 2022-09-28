@@ -1,6 +1,6 @@
 package cloud.weforward.person.entity;
 
-import cn.weforward.data.mybatisplus.support.MyBatisPlusBusinessVo;
+import cn.weforward.data.mybatisplus.support.AbstractEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
@@ -9,10 +9,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * </p>
  *
  * @author daibo
- * @since 2022-08-31 11:49:57
+ * @since 2022-09-28 20:14:12
  */
-@TableName("one_person")
-public class OnePerson extends MyBatisPlusBusinessVo {
+@TableName("person")
+public class PersonEntity extends AbstractEntity {
 
     private String name;
 
@@ -35,7 +35,7 @@ public class OnePerson extends MyBatisPlusBusinessVo {
 
     @Override
     public String toString() {
-        return "OnePerson{" +
+        return "PersonEntity{" +
             "name=" + name +
             ", age=" + age +
         "}";

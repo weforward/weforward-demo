@@ -8,15 +8,16 @@ import org.springframework.stereotype.Component;
 import cloud.weforward.person.command.PersonCmdExe;
 import cloud.weforward.person.dto.PersonNameCountQuery;
 import cloud.weforward.person.dto.PersonNameCountResult;
-import cloud.weforward.person.mapper.OnePersonMapper;
+import cloud.weforward.person.mapper.PersonMapper;
 
 @Component
 public class PersonCmdExeImpl implements PersonCmdExe {
-	@Autowired
-	protected OnePersonMapper onePersonMapper;
 
+
+	@Autowired
+	protected PersonMapper personMapper;
 	@Override
 	public List<PersonNameCountResult> execute(PersonNameCountQuery cmd) {
-		return onePersonMapper.nameCount(cmd);
+		return personMapper.nameCount(cmd);
 	}
 }

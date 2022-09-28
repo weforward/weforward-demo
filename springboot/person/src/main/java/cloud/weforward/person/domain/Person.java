@@ -1,11 +1,41 @@
 package cloud.weforward.person.domain;
 
-public interface Person {
+import java.util.Random;
 
-	String getId();
+import javax.annotation.Resource;
 
-	String getName();
+import cn.weforward.data.persister.support.AbstractPersistent;
+import cloud.weforward.person.domain.di.PersonDi;
 
-	int getAge();
+public class Person extends AbstractPersistent<PersonDi> {
+
+	@Resource
+	protected String m_Name;
+	@Resource
+	protected int m_Age;
+
+	protected Person(PersonDi di) {
+		super(di);
+	}
+
+	public Person(PersonDi di, String name) {
+		super(di);
+		initPersistenceId();
+		m_Name = name;
+		m_Age = new Random().nextInt(100);
+		persistenceUpdateNow();
+	}
+
+	public String getId() {
+		return getPersistenceId().getOrdinal();
+	}
+
+	public String getName() {
+		return m_Name;
+	}
+
+	public int getAge() {
+		return m_Age;
+	}
 
 }
