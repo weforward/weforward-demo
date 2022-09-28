@@ -2,7 +2,6 @@ package cloud.weforward.user.repository.impl;
 
 import org.springframework.stereotype.Component;
 
-import cloud.weforward.user.convertor.UserConvertor;
 import cloud.weforward.user.domain.User;
 import cloud.weforward.user.domain.store.UserRepository;
 import cloud.weforward.user.mapper.UserMapper;
@@ -22,18 +21,19 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void update(User user) {
-        if (null == user.getId()) {
-            user.setId(String.valueOf(System.currentTimeMillis()));
-            userMapper.insert(UserConvertor.toDataObject(user));
-        } else {
-            userMapper.updateById(UserConvertor.toDataObject(user));
-        }
+//        if (null == user.getId()) {
+//            user.setId(String.valueOf(System.currentTimeMillis()));
+//            userMapper.insert(UserConvertor.toDataObject(user));
+//        } else {
+//            userMapper.updateById(UserConvertor.toDataObject(user));
+//        }
     }
 
     @Override
     public User get(String id) {
-        cloud.weforward.user.entity.User user = userMapper.selectById(id);
-        return UserConvertor.toDomain(user);
+//        cloud.weforward.user.entity.User user = userMapper.selectById(id);
+//        return UserConvertor.toDomain(user);
+        return null;
     }
 
 
