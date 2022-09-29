@@ -1,5 +1,6 @@
 package cloud.weforward.person.domain;
 
+import java.util.Date;
 import java.util.Random;
 
 import javax.annotation.Resource;
@@ -14,6 +15,8 @@ public class Person extends AbstractPersistent<PersonDi> {
 	@Resource
 	protected int m_Age;
 
+	@Resource
+	protected Date m_CreateTime;
 	protected Person(PersonDi di) {
 		super(di);
 	}
@@ -23,6 +26,7 @@ public class Person extends AbstractPersistent<PersonDi> {
 		initPersistenceId();
 		m_Name = name;
 		m_Age = new Random().nextInt(100);
+		m_CreateTime=new Date();
 		persistenceUpdateNow();
 	}
 
@@ -38,4 +42,7 @@ public class Person extends AbstractPersistent<PersonDi> {
 		return m_Age;
 	}
 
+	public Date getCreateTime() {
+		return m_CreateTime;
+	}
 }

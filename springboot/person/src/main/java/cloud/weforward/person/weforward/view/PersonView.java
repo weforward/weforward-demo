@@ -1,5 +1,7 @@
 package cloud.weforward.person.weforward.view;
 
+import java.util.Date;
+
 import cloud.weforward.person.domain.Person;
 import cn.weforward.protocol.doc.annotation.DocAttribute;
 
@@ -30,4 +32,8 @@ public class PersonView {
 		return person.getAge();
 	}
 
+	@DocAttribute(description = "创建日期")
+	public Date getCreateTime() {
+		return person.getCreateTime();
+	}
 }
