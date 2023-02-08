@@ -1,5 +1,7 @@
 package cloud.weforward.user.mapper;
 
+import cloud.weforward.user.dto.UserNameCountQuery;
+import cloud.weforward.user.dto.UserNameCountResult;
 import cloud.weforward.user.entity.UserEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface UserMapper extends BaseMapper<UserEntity> {
 
+    UserNameCountResult nameCount(UserNameCountQuery query);
 }

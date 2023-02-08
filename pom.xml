@@ -42,8 +42,8 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <weforward.version>1.2.14</weforward.version>
-        <weforward.data.version>1.2.13</weforward.data.version>
+        <weforward.version>1.2.17</weforward.version>
+        <weforward.data.version>1.2.17</weforward.data.version>
         <weforward.starter.version>1.0.1</weforward.starter.version>
         <weforward.build.version>1.2.3</weforward.build.version>
     </properties>
